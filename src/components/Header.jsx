@@ -3,52 +3,81 @@ import styled from "styled-components";
 import MenuImg from "../img/icon-menu.png";
 import { ReactComponent as ShowMoreIcon } from "../svg/showMore.svg";
 import { ReactComponent as BellIcon } from "../svg/bell.svg";
+import { ReactComponent as NewIcon } from "../svg/new.svg";
+import { ReactComponent as BetaIcon } from "../svg/beta.svg";
+import { ReactComponent as NIcon } from "../svg/NIcon.svg";
+import { ReactComponent as DotIcon } from "../svg/dot3.svg";
 
 const Header = (props) => (
   <Wrap>
-    <Nav>
-      <TitleContainer>
-        <MenuIcon src={MenuImg} />
-        <Title>wanted</Title>
-      </TitleContainer>
-      <Menu>
-        <MenuItem>채용</MenuItem>
-        <MenuItem>이벤트</MenuItem>
-        <MenuItem>직군별 연봉</MenuItem>
-        <MenuItem>이력서</MenuItem>
-        <MenuItem>
-          커뮤니티<PlusText>New</PlusText>
-        </MenuItem>
-        <MenuItem>프리랜서</MenuItem>
-        <MenuItem>
-          AI 합격예측<PlusText>Beta</PlusText>
-        </MenuItem>
-      </Menu>
-      <Shortcuts>
-        <SearchButton>
-          <ShowMoreIcon />
-        </SearchButton>
-        <AlarmButton>
-          <BellIcon />
-        </AlarmButton>
-        <UserContainer>
-          <User>이</User>
-        </UserContainer>
-        <Line />
-        <Business>기업 서비스</Business>
-      </Shortcuts>
-    </Nav>
+    <NavContainer>
+      <Nav>
+        <TitleContainer>
+          <MenuIcon src={MenuImg} />
+          <Title>wanted</Title>
+        </TitleContainer>
+        <Menu>
+          <MenuItem>채용</MenuItem>
+          <MenuItem>이벤트</MenuItem>
+          <MenuItem>직군별 연봉</MenuItem>
+          <MenuItem>이력서</MenuItem>
+          <MenuItem>
+            커뮤니티
+            <PlusText>
+              <NewIcon />
+            </PlusText>
+          </MenuItem>
+          <MenuItem>프리랜서</MenuItem>
+          <MenuItem>
+            AI 합격예측
+            <PlusText>
+              <BetaIcon />
+            </PlusText>
+          </MenuItem>
+        </Menu>
+        <Shortcuts>
+          <SearchButton>
+            <ShowMoreIcon />
+          </SearchButton>
+          <AlarmButton>
+            <BellIcon />
+            <NIconContainer>
+              <NIcon />
+            </NIconContainer>
+          </AlarmButton>
+          <UserContainer>
+            <User>이</User>
+            <NIconContainer>
+              <NIcon />
+            </NIconContainer>
+          </UserContainer>
+          <Line />
+          <Business>기업 서비스</Business>
+          <DotIconContainer>
+            <DotIcon />
+          </DotIconContainer>
+        </Shortcuts>
+      </Nav>
+    </NavContainer>
   </Wrap>
 );
 
 export default Header;
 
 const Wrap = styled.div`
+  z-index: 1000;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
+`;
+
+const NavContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0 auto;
   width: 90%;
-  @media (min-width: 992px) and (max-width: 1199px) {
-    height: 50px;
-  }
+  height: 50px;
   @media (min-width: 768px) and (max-width: 991px) {
     height: 110px;
   }
@@ -86,6 +115,7 @@ const Menu = styled.ul`
   list-style-type: none;
   display: flex;
   padding: 0;
+  margin: 0;
   @media (min-width: 992px) and (max-width: 1100px) {
     flex: 1 1;
     justify-content: space-evenly;
@@ -96,7 +126,9 @@ const MenuItem = styled.li`
   position: relative;
   font-weight: 600;
   font-size: 14px;
-  padding: 15px;
+  @media (min-width: 1101px) {
+    padding: 15px;
+  }
   @media (min-width: 992px) and (max-width: 1100px) {
     font-size: 13px;
   }
@@ -107,11 +139,15 @@ const MenuItem = styled.li`
 `;
 
 const PlusText = styled.span`
-  color: #3366ff;
-  font-size: 7px;
   position: absolute;
   @media (min-width: 768px) and (max-width: 991px) {
-    top: 0px;
+    top: 4px;
+  }
+  @media (min-width: 992px) and (max-width: 1100px) {
+    top: -5px;
+  }
+  @media (min-width: 1101px) {
+    top: 7px;
   }
 `;
 
@@ -133,9 +169,10 @@ const SearchButton = styled.button`
 `;
 
 const AlarmButton = styled.button`
+  position: relative;
   background: none;
   border: none;
-  height: 29px;
+  height: 34px;
   width: 32px;
   display: flex;
   align-items: center;
@@ -143,6 +180,7 @@ const AlarmButton = styled.button`
 `;
 
 const UserContainer = styled.div`
+  position: relative;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -150,6 +188,9 @@ const UserContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 768px) and (max-width: 991px) {
+    display: none;
+  }
 `;
 
 const User = styled.div`
@@ -168,6 +209,9 @@ const Line = styled.div`
   height: 10px;
   width: 1px;
   margin: 10px;
+  @media (min-width: 768px) and (max-width: 991px) {
+    display: none;
+  }
 `;
 
 const Business = styled.div`
@@ -178,4 +222,28 @@ const Business = styled.div`
   border-radius: 15px;
   padding: 0 10px;
   font-weight: 400;
+  @media (min-width: 768px) and (max-width: 991px) {
+    display: none;
+  }
+`;
+
+const NIconContainer = styled.span`
+  position: absolute;
+  top: -5px;
+  right: -3px;
+  background: rgb(51, 102, 255);
+  width: 13px;
+  height: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+`;
+
+const DotIconContainer = styled.div`
+  background: black;
+  display: none;
+  @media (min-width: 768px) and (max-width: 991px) {
+    display: block;
+  }
 `;
