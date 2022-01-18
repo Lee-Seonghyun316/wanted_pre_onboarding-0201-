@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import MenuImg from "../img/icon-menu.png";
-import { ReactComponent as Reservation1 } from "../svg/showMore.svg";
-import { ReactComponent as Reservation2 } from "../svg/bell.svg";
+import { ReactComponent as ShowMoreIcon } from "../svg/showMore.svg";
+import { ReactComponent as BellIcon } from "../svg/bell.svg";
 
 const Header = (props) => (
   <Wrap>
@@ -23,8 +23,13 @@ const Header = (props) => (
         AI 합격예측<PlusText>Beta</PlusText>
       </MenuItem>
     </Menu>
-    <Reservation1 />
-    <Reservation2 />
+    <Shortcuts>
+      <ShowMoreIcon />
+      <BellIcon />
+      <UserContainer>
+        <User>이</User>
+      </UserContainer>
+    </Shortcuts>
   </Wrap>
 );
 
@@ -33,7 +38,9 @@ export default Header;
 const Wrap = styled.header`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  margin: 0 auto;
+  height: 50px;
 `;
 
 const TitleContainer = styled.div`
@@ -68,4 +75,32 @@ const PlusText = styled.span`
   font-size: 7px;
   position: absolute;
   top: 20px;
+`;
+
+const Shortcuts = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const UserContainer = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e1e2e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const User = styled.div`
+  width: 28px;
+  height: 28px;
+  background: #798f9c;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 `;
