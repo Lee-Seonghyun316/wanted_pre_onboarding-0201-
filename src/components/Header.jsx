@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import MenuImg from "../img/icon-menu.png";
+import { ReactComponent as Reservation1 } from "../svg/showMore.svg";
+import { ReactComponent as Reservation2 } from "../svg/bell.svg";
 
 const Header = (props) => (
   <Wrap>
@@ -21,6 +23,8 @@ const Header = (props) => (
         AI 합격예측<PlusText>Beta</PlusText>
       </MenuItem>
     </Menu>
+    <Reservation1 />
+    <Reservation2 />
   </Wrap>
 );
 
