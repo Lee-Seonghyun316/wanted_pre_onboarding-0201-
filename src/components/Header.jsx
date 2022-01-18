@@ -35,6 +35,11 @@ const Header = (props) => (
             </PlusText>
           </MenuItem>
         </Menu>
+        <MobileMenu>
+          <ChoiceItem>홈</ChoiceItem>
+          <MobileItem>채용</MobileItem>
+          <MobileItem>이벤트</MobileItem>
+        </MobileMenu>
         <Shortcuts>
           <SearchButton>
             <ShowMoreIcon />
@@ -78,8 +83,11 @@ const NavContainer = styled.div`
   margin: 0 auto;
   width: 90%;
   height: 50px;
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (max-width: 991px) {
     height: 110px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;
 
@@ -98,6 +106,10 @@ const TitleContainer = styled.div`
   @media (min-width: 768px) and (max-width: 991px) {
     width: 100%;
     height: 60px;
+  }
+  @media (max-width: 767px) {
+    padding: 15px 20px;
+    width: 100%;
   }
 `;
 
@@ -119,6 +131,9 @@ const Menu = styled.ul`
   @media (min-width: 992px) and (max-width: 1100px) {
     flex: 1 1;
     justify-content: space-evenly;
+  }
+  @media (max-width: 767px) {
+    display: none;
   }
 `;
 
@@ -188,7 +203,7 @@ const UserContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (max-width: 991px) {
     display: none;
   }
 `;
@@ -209,7 +224,7 @@ const Line = styled.div`
   height: 10px;
   width: 1px;
   margin: 10px;
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (max-width: 991px) {
     display: none;
   }
 `;
@@ -222,7 +237,7 @@ const Business = styled.div`
   border-radius: 15px;
   padding: 0 10px;
   font-weight: 400;
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (max-width: 991px) {
     display: none;
   }
 `;
@@ -243,7 +258,40 @@ const NIconContainer = styled.span`
 const DotIconContainer = styled.div`
   background: black;
   display: none;
-  @media (min-width: 768px) and (max-width: 991px) {
+  @media (max-width: 991px) {
     display: block;
   }
+`;
+
+const MobileMenu = styled.ul`
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  @media (max-width: 767px) {
+    display: flex;
+  }
+`;
+
+const MobileItem = styled.li`
+  font-weight: 600;
+  font-size: 14px;
+  padding: 11px 10px 19px 10px;
+  @media (max-width: 767px) {
+  }
+  @media (max-width: 320px) {
+    font-size: 13px;
+  }
+`;
+
+const ChoiceItem = styled.li`
+  font-weight: 600;
+  font-size: 14px;
+  padding: 11px 10px 19px 20px;
+  @media (max-width: 767px) {
+  }
+  @media (max-width: 320px) {
+    font-size: 13px;
+  }
+  border-bottom: solid 2px blue;
 `;
