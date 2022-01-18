@@ -6,7 +6,7 @@ import { ReactComponent as BellIcon } from "../svg/bell.svg";
 import { ReactComponent as NewIcon } from "../svg/new.svg";
 import { ReactComponent as BetaIcon } from "../svg/beta.svg";
 import { ReactComponent as NIcon } from "../svg/NIcon.svg";
-import { ReactComponent as DotIcon } from "../svg/dot3.svg";
+import { ReactComponent as DotIcon } from "../svg/dot.svg";
 
 const Header = (props) => (
   <Wrap>
