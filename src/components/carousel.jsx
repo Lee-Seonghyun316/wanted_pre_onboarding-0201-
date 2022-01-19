@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef, useEffect, useCallback} from "react";
 import styled from "styled-components";
 import Item from "./item";
 import Button from "./button";
@@ -16,7 +16,7 @@ const Carousel = ({flowTime}) => {
         }, 500);
     }, [current]);
 
-    const moveNext = () => {
+    const moveNext = useCallback(() => {
         if (!isMoving.current) {
             if (current === totalItems - 1) {
                 setCurrent(0);
@@ -24,9 +24,9 @@ const Carousel = ({flowTime}) => {
                 setCurrent(current + 1);
             }
         }
-    };
+    }, [current]);
 
-    const movePrev = () => {
+    const movePrev = useCallback(() => {
         if (!isMoving.current) {
             if (current === 0) {
                 setCurrent(totalItems - 1);
@@ -34,7 +34,7 @@ const Carousel = ({flowTime}) => {
                 setCurrent(current - 1);
             }
         }
-    };
+    },[current]);
 
     React.useLayoutEffect(() => {
         let intervalId;
@@ -44,7 +44,7 @@ const Carousel = ({flowTime}) => {
             }, flowTime);
         }
         return () => clearTimeout(intervalId);
-    }, [isFlowing, setCurrent, current]);
+    }, [isFlowing, setCurrent, current, moveNext, flowTime]);
 
     const [mouseDownClientX, setMouseDownClientX] = useState(0);
     const [mouseUpClientX, setMouseUpClientX] = useState(0);
@@ -69,7 +69,7 @@ const Carousel = ({flowTime}) => {
                 movePrev();
             }
         }
-    }, [mouseUpClientX]);
+    }, [mouseUpClientX, moveNext, movePrev, mouseDownClientX]);
 
     const srcList = [
         {
