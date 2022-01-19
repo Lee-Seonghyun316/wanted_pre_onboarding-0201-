@@ -3,7 +3,7 @@ import React from "react";
 
 const Item = ({src, active, prev, next, title, text}) => {
     return (
-        <Wrap active={active} prev={prev} next={next}>
+        <Wrap active={active} prev={prev} next={next} >
             <ImgContainer>
                 <ItemStyle src={src} alt=""/>
                 <Des>

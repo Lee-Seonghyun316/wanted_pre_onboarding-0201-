@@ -3,10 +3,11 @@ import styled from "styled-components";
 import Item from "./item";
 import Button from "./button";
 
-const Carousel = ({autoflow}) => {
+const Carousel = ({flowTime}) => {
     const totalItems = 8;
     const [current, setCurrent] = useState(0);
     const isMoving = useRef(false);
+    const [isFlowing, setIsFlowing] = React.useState(true);
 
     useEffect(() => {
         isMoving.current = true;
@@ -14,16 +15,6 @@ const Carousel = ({autoflow}) => {
             isMoving.current = false;
         }, 500);
     }, [current]);
-
-    React.useLayoutEffect(() => {
-        let intervalId;
-        if (isMoving) {
-            intervalId = setInterval(() => {
-                setCurrent(current + 1);
-            }, autoflow);
-        }
-        return () => clearTimeout(intervalId);
-    }, [isMoving, setCurrent, current]);
 
     const moveNext = () => {
         if (!isMoving.current) {
@@ -34,6 +25,18 @@ const Carousel = ({autoflow}) => {
             }
         }
     };
+
+    React.useLayoutEffect(() => {
+        let intervalId;
+        if (isFlowing) {
+            intervalId = setInterval(() => {
+                moveNext();
+            }, flowTime);
+        }
+        return () => clearTimeout(intervalId);
+    }, [isFlowing, setCurrent, current]);
+
+
     const movePrev = () => {
         if (!isMoving.current) {
             if (current === 0) {
@@ -110,10 +113,10 @@ const Carousel = ({autoflow}) => {
         });
 
     return (
-        <CarouselStyle>
+        <CarouselStyle onMouseOver={() => setIsFlowing(false)}
+                       onMouseOut={() => setIsFlowing(true)}>
             <div className="carousel">
                 {ItemList}
-
                 <Button prev handleSlide={movePrev}/>
                 <Button next handleSlide={moveNext}/>
             </div>

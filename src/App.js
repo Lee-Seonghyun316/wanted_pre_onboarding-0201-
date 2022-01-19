@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            <Carousel autoflow={3000}
+            <Carousel flowTime={3000}
             />
         </div>
     );
