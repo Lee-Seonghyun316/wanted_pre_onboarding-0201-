@@ -132,6 +132,9 @@ const Carousel = ({flowTime}) => {
                     next={index === next}
                     title={srcList[index].title}
                     text={srcList[index].text}
+                    onMouseDown={onMouseDown}
+                    onMouseUp={onMouseUp}
+                    cursorOn={cursorOn}
                 />
             );
         });
@@ -139,9 +142,6 @@ const Carousel = ({flowTime}) => {
     return (
         <CarouselStyle onMouseOver={() => setIsFlowing(false)}
                        onMouseOut={() => setIsFlowing(true)}
-                       onMouseDown={onMouseDown}
-                       onMouseUp={onMouseUp}
-                       cursorOn={cursorOn}
         >
             <div className="carousel">
                 {ItemList}
@@ -154,9 +154,8 @@ const Carousel = ({flowTime}) => {
 export default Carousel;
 
 const CarouselStyle = styled.div`
-cursor: pointer;
   overflow: hidden;
-  width: 90%;
+  width: 80%;
   margin: auto;
   * {
     box-sizing: border-box;

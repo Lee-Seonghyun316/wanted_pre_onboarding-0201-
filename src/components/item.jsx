@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import React from "react";
 
-const Item = ({src, active, prev, next, title, text}) => {
+const Item = ({src, active, prev, next, title, text, onMouseDown, onMouseUp, cursorOn}) => {
     return (
-        <Wrap active={active} prev={prev} next={next} >
+        <Wrap active={active} prev={prev} next={next} onMouseDown={onMouseDown}
+              onMouseUp={onMouseUp}
+              cursorOn={cursorOn}>
             <ImgContainer>
-                <ItemStyle src={src} alt=""/>
+                <ItemStyle src={src} alt=".."/>
                 <Des>
                     <DesTitle>
                         {title}
@@ -40,6 +42,7 @@ const Wrap = styled.div`
 
 const ImgContainer = styled.div`
 position: relative;
+cursor: pointer;
 `;
 
 const Des = styled.div`
