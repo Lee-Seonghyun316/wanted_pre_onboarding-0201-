@@ -21,7 +21,6 @@ const Wrap = styled.div`
   opacity: 0;
   position: absolute;
   top: 0;
-  width: 100%;
   margin: auto;
   padding: 1rem 4rem;
   z-index: 100;
@@ -47,7 +46,7 @@ const Des = styled.div`
 position: absolute;
 background: white;
 bottom: 28px;
-left: 7%;
+left: 28px;
 width: 330px;
 border-radius: 5px;
 text-align: left;
@@ -81,8 +80,7 @@ padding: 15px 20px;
 `;
 
 const ItemStyle = styled.img`
-width: 1060px;
-height: 300px;
+  width: 100%;
 `;
 
 export default Item;

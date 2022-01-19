@@ -1,70 +1,72 @@
 import React from "react";
 import styled from "styled-components";
 import MenuImg from "../img/icon-menu.png";
-import { ReactComponent as ShowMoreIcon } from "../svg/showMore.svg";
-import { ReactComponent as BellIcon } from "../svg/bell.svg";
-import { ReactComponent as NewIcon } from "../svg/new.svg";
-import { ReactComponent as BetaIcon } from "../svg/beta.svg";
-import { ReactComponent as NIcon } from "../svg/NIcon.svg";
-import { ReactComponent as DotIcon } from "../svg/dot.svg";
+import {ReactComponent as ShowMoreIcon} from "../svg/showMore.svg";
+import {ReactComponent as BellIcon} from "../svg/bell.svg";
+import {ReactComponent as NewIcon} from "../svg/new.svg";
+import {ReactComponent as BetaIcon} from "../svg/beta.svg";
+import {ReactComponent as NIcon} from "../svg/NIcon.svg";
+// import { ReactComponent as SVGDot } from "../svg/dot.svg";
+import dotIcon from "../img/dotIcon.png";
 
 const Header = (props) => (
-  <Wrap>
-    <NavContainer>
-      <Nav>
-        <TitleContainer>
-          <MenuIcon src={MenuImg} />
-          <Title>wanted</Title>
-        </TitleContainer>
-        <Menu>
-          <MenuItem>채용</MenuItem>
-          <MenuItem>이벤트</MenuItem>
-          <MenuItem>직군별 연봉</MenuItem>
-          <MenuItem>이력서</MenuItem>
-          <MenuItem>
-            커뮤니티
-            <PlusText>
-              <NewIcon />
-            </PlusText>
-          </MenuItem>
-          <MenuItem>프리랜서</MenuItem>
-          <MenuItem>
-            AI 합격예측
-            <PlusText>
-              <BetaIcon />
-            </PlusText>
-          </MenuItem>
-        </Menu>
-        <MobileMenu>
-          <ChoiceItem>홈</ChoiceItem>
-          <MobileItem>채용</MobileItem>
-          <MobileItem>이벤트</MobileItem>
-        </MobileMenu>
-        <Shortcuts>
-          <SearchButton>
-            <ShowMoreIcon />
-          </SearchButton>
-          <AlarmButton>
-            <BellIcon />
-            <NIconContainer>
-              <NIcon />
-            </NIconContainer>
-          </AlarmButton>
-          <UserContainer>
-            <User>이</User>
-            <NIconContainer>
-              <NIcon />
-            </NIconContainer>
-          </UserContainer>
-          <Line />
-          <Business>기업 서비스</Business>
-          <DotIconContainer>
-            <DotIcon />
-          </DotIconContainer>
-        </Shortcuts>
-      </Nav>
-    </NavContainer>
-  </Wrap>
+    <Wrap>
+        <NavContainer>
+            <Nav>
+                <TitleContainer>
+                    <MenuIcon src={MenuImg}/>
+                    <Title>wanted</Title>
+                </TitleContainer>
+                <Menu>
+                    <MenuItem>채용</MenuItem>
+                    <MenuItem>이벤트</MenuItem>
+                    <MenuItem>직군별 연봉</MenuItem>
+                    <MenuItem>이력서</MenuItem>
+                    <MenuItem>
+                        커뮤니티
+                        <PlusText>
+                            <NewIcon/>
+                        </PlusText>
+                    </MenuItem>
+                    <MenuItem>프리랜서</MenuItem>
+                    <MenuItem>
+                        AI 합격예측
+                        <PlusText>
+                            <BetaIcon/>
+                        </PlusText>
+                    </MenuItem>
+                </Menu>
+                <MobileMenu>
+                    <ChoiceItem>홈</ChoiceItem>
+                    <MobileItem>채용</MobileItem>
+                    <MobileItem>이벤트</MobileItem>
+                </MobileMenu>
+                <Shortcuts>
+                    <SearchButton>
+                        <ShowMoreIcon/>
+                    </SearchButton>
+                    <AlarmButton>
+                        <BellIcon/>
+                        <NIconContainer>
+                            <NIcon/>
+                        </NIconContainer>
+                    </AlarmButton>
+                    <UserContainer>
+                        <User>이</User>
+                        <NIconContainer>
+                            <NIcon/>
+                        </NIconContainer>
+                    </UserContainer>
+                    <Line/>
+                    <Business>기업 서비스</Business>
+                    <DotIconContainer>
+                        {/*<SVGDot/>*/}
+                        <img src={dotIcon} alt=""/>
+                    </DotIconContainer>
+                </Shortcuts>
+            </Nav>
+        </NavContainer>
+    </Wrap>
 );
 
 export default Header;
@@ -256,7 +258,7 @@ const NIconContainer = styled.span`
 `;
 
 const DotIconContainer = styled.div`
-  background: black;
+  margin-right: 10px;
   display: none;
   @media (max-width: 991px) {
     display: block;
