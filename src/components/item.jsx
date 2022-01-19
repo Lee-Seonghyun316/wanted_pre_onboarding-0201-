@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import React from "react";
 
-const Item = ({src, active, prev, next}) => {
+const Item = ({src, active, prev, next, title, text}) => {
     return (
         <Wrap active={active} prev={prev} next={next}>
             <ImgContainer>
                 <ItemStyle src={src} alt=""/>
                 <Des>
                     <DesTitle>
-                        포트폴리오를 부탁해!
+                        {title}
                     </DesTitle>
-                    <DesText>디자이너의 포폴 살펴보기</DesText>
+                    <DesText>{text}</DesText>
                     <Move>바로가기 ></Move>
                 </Des>
             </ImgContainer>
