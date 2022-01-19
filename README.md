@@ -1,1 +1,34 @@
-netlify로 배포한 웹페이지 주소 : https://peaceful-austin-6a05e0.netlify.app/
+<h3>netlify로 배포한 웹페이지 주소 : https://peaceful-austin-6a05e0.netlify.app/</h3>
+
+<h2>프로젝트 설명</h2>
+
+- styled-component 사용
+- React.js 사용
+
+1. 상단 GNB
+
+   - 반응형 
+     화면 크기에 따른 아이콘 및 메뉴 감소 
+   - flexbox 사용
+   - svg 사용
+     
+     
+
+2. 캐러셀
+   <구현내용>
+   라이브러리 사용 x
+   react hooks 사용
+
+   - 반응형
+     이미지 크기 변경
+     작은 화면 설명 없앰
+   - 드래그로 넘기기 (양방향)
+   - 왼/오 버튼 클릭 이벤트 -> 카드 이동
+   - 자동 스와이프 이벤트 (3000미리초)
+   - 마우스 오버시 스와이프 정지
+     
+     
+
+   <미구현 내용>
+
+   - 이전 다음 슬라이드 일부 노출 레이아웃
