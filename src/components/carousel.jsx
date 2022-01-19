@@ -3,10 +3,9 @@ import styled from "styled-components";
 import Item from "./item";
 import Button from "./button";
 
-const Carousel = () => {
+const Carousel = ({autoflow}) => {
     const totalItems = 8;
     const [current, setCurrent] = useState(0);
-
     const isMoving = useRef(false);
 
     useEffect(() => {
@@ -15,6 +14,16 @@ const Carousel = () => {
             isMoving.current = false;
         }, 500);
     }, [current]);
+
+    React.useLayoutEffect(() => {
+        let intervalId;
+        if (isMoving) {
+            intervalId = setInterval(() => {
+                setCurrent(current + 1);
+            }, autoflow);
+        }
+        return () => clearTimeout(intervalId);
+    }, [isMoving, setCurrent, current]);
 
     const moveNext = () => {
         if (!isMoving.current) {
