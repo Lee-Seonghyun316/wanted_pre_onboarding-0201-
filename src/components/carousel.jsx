@@ -26,6 +26,16 @@ const Carousel = ({flowTime}) => {
         }
     };
 
+    const movePrev = () => {
+        if (!isMoving.current) {
+            if (current === 0) {
+                setCurrent(totalItems - 1);
+            } else {
+                setCurrent(current - 1);
+            }
+        }
+    };
+
     React.useLayoutEffect(() => {
         let intervalId;
         if (isFlowing) {
@@ -36,16 +46,30 @@ const Carousel = ({flowTime}) => {
         return () => clearTimeout(intervalId);
     }, [isFlowing, setCurrent, current]);
 
+    const [mouseDownClientX, setMouseDownClientX] = useState(0);
+    const [mouseUpClientX, setMouseUpClientX] = useState(0);
+    const [cursorOn, setCursorOn] = useState(false);
 
-    const movePrev = () => {
-        if (!isMoving.current) {
-            if (current === 0) {
-                setCurrent(totalItems - 1);
-            } else {
-                setCurrent(current - 1);
+    const onMouseDown = (e) => {
+        setMouseDownClientX(e.clientX);
+        setCursorOn(true);
+    };
+    const onMouseUp = (e) => {
+        setMouseUpClientX(e.clientX);
+        setCursorOn(false);
+    };
+
+    useEffect(() => {
+        const dragSpace = Math.abs(mouseDownClientX - mouseUpClientX);
+
+        if (mouseDownClientX !== 0) {
+            if (mouseUpClientX < mouseDownClientX && dragSpace > 100) {
+                moveNext();
+            } else if (mouseUpClientX > mouseDownClientX && dragSpace > 100) {
+                movePrev();
             }
         }
-    };
+    }, [mouseUpClientX]);
 
     const srcList = [
         {
@@ -114,7 +138,11 @@ const Carousel = ({flowTime}) => {
 
     return (
         <CarouselStyle onMouseOver={() => setIsFlowing(false)}
-                       onMouseOut={() => setIsFlowing(true)}>
+                       onMouseOut={() => setIsFlowing(true)}
+                       onMouseDown={onMouseDown}
+                       onMouseUp={onMouseUp}
+                       cursorOn={cursorOn}
+        >
             <div className="carousel">
                 {ItemList}
                 <Button prev handleSlide={movePrev}/>
@@ -126,6 +154,7 @@ const Carousel = ({flowTime}) => {
 export default Carousel;
 
 const CarouselStyle = styled.div`
+cursor: pointer;
   overflow: hidden;
   width: 90%;
   margin: auto;
